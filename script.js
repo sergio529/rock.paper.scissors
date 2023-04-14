@@ -12,6 +12,7 @@ function getComputerChoice(){
     }
 }
 
+// PlayRound function decides who wins  between two selections.
 function playRound(playerSelection, computerSelection){
     let result;
     if (/rock/i.test(playerSelection)) {
@@ -19,7 +20,7 @@ function playRound(playerSelection, computerSelection){
             return 'Draw! rock draws rock'
         }
         else if (/scissor/i.test(computerSelection)){
-            return 'You win! Rock beats Paper'
+            return 'You win! Rock beats scissors'
         }
         else if (/paper/i.test(computerSelection)){
             return 'You lose!, Paper beats Rock'
@@ -49,9 +50,30 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
- function getPlayerSelection(){
-    
-}
 
-let numberComputer=getComputerChoice();
-console.log(numberComputer)
+//Game function created to initialize the game for 5 games
+function game(){
+    let playerPoints = 0;
+    let computerPoints = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Chose!');
+        let computerSelection = getComputerChoice();
+        
+        
+        result = playRound(playerSelection,computerSelection);
+        console.log(result)
+        if(/You win/.test(result)){
+            playerPoints ++;
+           
+        }else if(/You lose/.test(result)){
+            computerPoints ++;   
+        }       
+    }
+    
+    let winner = (playerPoints>computerPoints)?'You WIN!': (computerPoints>playerPoints)?'You Lose!':'You Draw';
+    console.log('Final Results: ')
+    console.log( 'Player Score:' + playerPoints )
+    console.log( 'Computer Score:' + computerPoints )
+    console.log(winner);
+}
+game();
