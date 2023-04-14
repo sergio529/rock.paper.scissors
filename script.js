@@ -14,8 +14,38 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     let result;
-    if (playerSelection = /rock/i) {
-        
+    if (/rock/i.test(playerSelection)) {
+        if(/rock/i.test(computerSelection)){
+            return 'Draw! rock draws rock'
+        }
+        else if (/scissor/i.test(computerSelection)){
+            return 'You win! Rock beats Paper'
+        }
+        else if (/paper/i.test(computerSelection)){
+            return 'You lose!, Paper beats Rock'
+        }
+    }
+    if (/paper/i.test(playerSelection)) {
+        if(/rock/i.test(computerSelection)){
+            return  'You win! Paper beats Rock'
+        }
+        else if (/scissors/i.test(computerSelection)){
+            return 'You lose!, Scissors beats Paper'
+        }
+        else if (/paper/i.test(computerSelection)){
+            return 'Draw! Paper draws Paper'
+        }
+    }
+    if (/scissors/i.test(playerSelection)) {
+        if(/rock/i.test(computerSelection)){
+            return   'You lose!, Rock beats Scissors'
+        }
+        else if (/scissors/i.test(computerSelection)){
+            return 'Draw! Scissors draws Scissors'
+        }
+        else if (/paper/i.test(computerSelection)){
+            return 'You win! Scissors beats Paper'
+        }
     }
 }
 
@@ -25,9 +55,3 @@ function playRound(playerSelection, computerSelection){
 
 let numberComputer=getComputerChoice();
 console.log(numberComputer)
-if (/rock/i.test(numberComputer)) {
-        console.log('you rock')
-}
-else{
-    console.log("You don't rock")
-}
